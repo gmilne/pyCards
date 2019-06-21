@@ -77,6 +77,7 @@ class BlackJack:
         if not self.playing:
             self.deck.reset()
             self.resetGame()
+            self.faceup_dealer = False
             self.deal()
             self.playing = True
             self.playOrder = list(self.table.keys())[::-1]
@@ -132,5 +133,6 @@ class BlackJack:
                     total += 1
                 else:
                     total += 11
-            total += self.deck.deck[card]['value']
+            else:
+                total += self.deck.deck[card]['value']
         return total
